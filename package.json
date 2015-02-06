@@ -13,5 +13,14 @@
     "meow": "^3.0.0",
     "prompt": "^0.2.14",
     "run-parallel": "^1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ellell/github-rsvp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ellell/github-rsvp/issues"
+  },
+  "homepage": "https://github.com/ellell/github-rsvp"
 }
