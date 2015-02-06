@@ -1,11 +1,10 @@
 {
   "name": "github-rsvp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "unanswered-github-issues.js",
   "author": "Lisa Övermyr",
   "license": "MIT",
-  "main": "unanswered-github-issues.js",
   "bin": {
     "github-rsvp": "bin/log-unanswered-issues.js"
   },
