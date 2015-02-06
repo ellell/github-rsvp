@@ -1,7 +1,7 @@
 {
   "name": "github-rsvp",
   "version": "1.0.1",
-  "description": "",
+  "description": "Get all your open github issues and pull requests where you've been mentioned but haven't answered yet.",
   "main": "unanswered-github-issues.js",
   "author": "Lisa Övermyr",
   "license": "MIT",
