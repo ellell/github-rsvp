@@ -1,0 +1,16 @@
+{
+  "name": "github-rsvp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Lisa Övermyr",
+  "license": "MIT",
+  "main": "unanswered-github-issues.js",
+  "bin": {
+    "github-rsvp": "bin/log-unanswered-issues.js"
+  },
+  "dependencies": {
+    "github": "^0.2.3",
+    "run-parallel": "^1.0.0"
+  }
+}
