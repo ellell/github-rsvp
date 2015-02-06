@@ -34,13 +34,23 @@ var GitHubApi = require('github')
     }
 
 module.exports = function (opts, callback) {
-  github.authenticate({
-      type: 'oauth'
-    , token: opts.token
-  })
+  if (opts.token)
+    github.authenticate({
+        type: 'oauth'
+      , token: opts.token
+    })
+  else if (opts.username && opts.password) {
+    github.authenticate({
+        type: 'basic'
+      , username: opts.username
+      , password: opts.password
+    })
+  } else {
+    return callback(new Error('token or username & password required'))
+  }
 
   github.user.get({}, function (err, user) {
-    if (err) return callback('err', err)
+    if (err) return callback(err)
 
     var username = user.login
       , userregexp = new RegExp(username)

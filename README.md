@@ -13,5 +13,6 @@ npm install -g github-rsvp
 ```
 
 ## How to
-Create a github access token, copy token and run
-Simply run `github-rsvp` [access-token]
+- Run `github-rsvp` and write your github username and password when prompted
+- `github-rsvp -u <github-username> -p <github-password>`
+- create a github access token, copy token and run `github-rsvp -t <access-token>`
