@@ -11,3 +11,7 @@ Get all your open github issues and pull requests where you've been mentioned bu
 ```
 npm install -g github-rsvp
 ```
+
+## How to
+Create a github access token, copy token and run
+Simply run `github-rsvp` [access-token]
