@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var meow = require('meow')
-  , prompt = require('prompt')
+  , ghauth = require('ghauth')
   , unansweredGithubIssues = require('../unanswered-github-issues')
   , cli = meow({
         pkg: '../package.json'
@@ -32,16 +32,12 @@ var meow = require('meow')
 if (cli.flags.token || (cli.flags.username && cli.flags.password)) {
   logIssues(cli.flags)
 }  else {
-  prompt.start()
-  var promptSchema = {
-    properties: {
-        username: { required: true }
-      , password: { required: true, hidden: true }
-    }
-  }
-  prompt.get(promptSchema, function (err, input) {
+  ghauth({configName: 'github-rsvp', scopes: ['repo']}, function (err, auth) {
     if (err) return console.log('err', err)
 
-    logIssues(input)
+    logIssues({
+        username: auth.user
+      , token: auth.token
+    })
   })
 }

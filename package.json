@@ -9,9 +9,9 @@
     "github-rsvp": "bin/log-unanswered-issues.js"
   },
   "dependencies": {
+    "ghauth": "^3.0.0",
     "github": "^0.2.3",
     "meow": "^3.0.0",
-    "prompt": "^0.2.14",
     "run-parallel": "^1.0.0"
   },
   "devDependencies": {},
