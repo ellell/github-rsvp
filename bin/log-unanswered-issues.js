@@ -24,8 +24,13 @@ var meow = require('meow')
       unansweredGithubIssues(opts, function (err, issues) {
         if (err) return console.log('err', err)
 
-        console.log('Unanswered issues:\n'
-          , issues.map(function (issue) { return issue.html_url } ).join('\n'))
+        console.log('Unanswered issues:');
+
+        issues.forEach(function (issue) {
+          console.log(issue.title);
+          console.log(issue.html_url);
+          console.log('\n');
+        });
       })
     }
 
