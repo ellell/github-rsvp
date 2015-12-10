@@ -3,6 +3,7 @@
 var meow = require('meow')
   , ghauth = require('ghauth')
   , unansweredGithubIssues = require('../unanswered-github-issues')
+  , colors = require('colors/safe')
   , cli = meow({
         pkg: '../package.json'
       , help: [
@@ -24,12 +25,11 @@ var meow = require('meow')
       unansweredGithubIssues(opts, function (err, issues) {
         if (err) return console.log('err', err)
 
-        console.log('Unanswered issues:');
+        console.log(colors.yellow.underline('Unanswered issues:'));
 
         issues.forEach(function (issue) {
-          console.log(issue.title);
-          console.log(issue.html_url);
-          console.log('\n');
+          console.log(colors.magenta(issue.title));
+          console.log(colors.blue(' > ' + issue.html_url));
         });
       })
     }
