@@ -73,5 +73,3 @@ module.exports = function (opts, callback) {
     })
   })
 }
-
-// philosophers.indexOf(person) >= 0
