@@ -3,7 +3,7 @@
 var meow = require('meow')
   , ghauth = require('ghauth')
   , unansweredGithubIssues = require('../unanswered-github-issues')
-  , colors = require('colors/safe')
+  , colors = require('chalk')
   , cli = meow({
         pkg: '../package.json'
       , help: [
@@ -25,11 +25,13 @@ var meow = require('meow')
       unansweredGithubIssues(opts, function (err, issues) {
         if (err) return console.log('err', err)
 
-        console.log(colors.yellow.underline('Unanswered issues:'));
+        console.log(colors.yellow.inverse(' Unanswered issues: '));
+        console.log();
 
         issues.forEach(function (issue) {
           console.log(colors.magenta(issue.title));
-          console.log(colors.blue(' > ' + issue.html_url));
+          console.log(colors.blue(' > %s'), colors.underline(issue.html_url));
+          console.log(colors.grey.dim('   C:%s U:%s'), issue.created_at, issue.updated_at);
         });
       })
     }
