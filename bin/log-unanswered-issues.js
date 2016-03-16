@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+
 var meow = require('meow')
   , ghauth = require('ghauth')
   , unansweredGithubIssues = require('../unanswered-github-issues')
@@ -29,7 +30,11 @@ var meow = require('meow')
         console.log();
 
         issues.forEach(function (issue) {
-          console.log(colors.magenta(issue.title));
+          var title = colors.magenta(issue.title);
+          if (issue.pull_request) {
+            title = title + colors.yellow('*');
+          }
+          console.log(title);
           console.log(colors.blue(' > %s'), colors.underline(issue.html_url));
           console.log(colors.grey.dim('   C:%s U:%s'), issue.created_at, issue.updated_at);
         });
