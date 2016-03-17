@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-
 var meow = require('meow')
   , ghauth = require('ghauth')
   , unansweredGithubIssues = require('../unanswered-github-issues')
