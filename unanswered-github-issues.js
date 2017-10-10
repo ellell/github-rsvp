@@ -11,21 +11,21 @@ var GitHubApi = require('github')
   , getIssueComments = function (issue, done) {
       github.issues.getComments({
           number: issue.number
-        , user: issue.repository.owner.login
+        , owner: issue.repository.owner.login
         , repo: issue.repository.name
       }, done)
     }
 
   , getIssuesWithComments = function (done) {
-      github.issues.getAll({ filter: 'mentioned' }, function (err, issues) {
+      github.issues.getAll({ filter: 'mentioned' }, function (err, response) {
         if (err) return done(err)
 
-        parallel(issues.map(function (issue) {
+        parallel(response.data.map(function (issue) {
           return function (cb) {
             getIssueComments(issue, function (err, comments) {
-              if (err) return cb(err)
+              if (err && err.code !== 404) return cb(err)
 
-              issue.comments = comments || []
+              issue.comments = comments && comments.data || []
               cb(null, issue)
             })
           }
@@ -49,7 +49,7 @@ module.exports = function (opts, callback) {
     return callback(new Error('token or username & password required'))
   }
 
-  github.user.get({}, function (err, user) {
+  github.users.get({}, function (err, user) {
     if (err) return callback(err)
 
     var username = user.login
@@ -60,6 +60,7 @@ module.exports = function (opts, callback) {
 
       var unansweredIssues = issues.filter(function (issue) {
         var unanswered = true
+
         issue.comments.forEach(function (comment) {
           if (userregexp.test(comment.body))
             unanswered = true

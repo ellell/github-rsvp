@@ -11,7 +11,7 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "ghauth": "^3.0.0",
-    "github": "^0.2.3",
+    "github": "^11.0.0",
     "meow": "^3.0.0",
     "run-parallel": "^1.0.0"
   },
